@@ -13,6 +13,7 @@
   var currentIndex = -1;   // index within queue
   var activeTags = {};     // selected tag filters
   var sortMode = 'time';
+  var source = 'library';   // 'library' (tracks.json) | 'community' (/api/tracks)
 
   var audio = document.getElementById('audio');
   var grid = document.getElementById('grid');
@@ -129,6 +130,7 @@
         '<div class="title">' + escapeHtml(pick(t, 'title', 'titleEn')) + '</div>' +
         '<div class="meta"><span>' + escapeHtml(pick(t, 'artist', 'artistEn')) + '</span>' +
         (t.album ? '<span>' + escapeHtml(pick(t, 'album', 'albumEn')) + '</span>' : '') + '</div>' +
+        (t.authorName ? '<div class="by">' + escapeHtml(window.__t ? window.__t('cc.by') : 'by') + ' ' + escapeHtml(t.authorName) + '</div>' : '') +
         (tags ? '<div class="tags">' + tags + '</div>' : '') +
         '</div>';
       card.addEventListener('click', function () { playFromQueue(i); });
@@ -216,6 +218,11 @@
       b.classList.add('on');
       renderGrid();
     });
+    var sseg = document.getElementById('srcSeg');
+    if (sseg) sseg.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      setSource(b.getAttribute('data-src'));
+    });
     // re-render on language change
     document.addEventListener('click', function (e) {
       if (e.target.closest && e.target.closest('[data-lang-toggle]')) {
@@ -224,12 +231,8 @@
     });
   }
 
-  /* ---------- boot ---------- */
-  function boot() {
-    initThemeBtn();
-    initPlayer();
-    initEvents();
-    var yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
+  /* ---------- data sources ---------- */
+  function loadLibrary() {
     fetch(TRACKS_URL).then(function (r) { return r.json(); }).then(function (data) {
       tracks = (data && data.tracks) || [];
       renderChips();
@@ -238,6 +241,35 @@
       empty.style.display = 'block';
       empty.textContent = '无法加载 tracks.json：' + e;
     });
+  }
+
+  function loadCommunity() {
+    fetch('/api/tracks').then(function (r) { return r.json(); }).then(function (data) {
+      tracks = (data && data.tracks) || [];
+      renderChips();
+      renderGrid();
+    }).catch(function () {
+      empty.style.display = 'block';
+      empty.textContent = '社区作品加载失败，请稍后重试。';
+    });
+  }
+
+  function setSource(s) {
+    source = s;
+    var sseg = document.getElementById('srcSeg');
+    if (sseg) [].forEach.call(sseg.querySelectorAll('button'), function (x) {
+      x.classList.toggle('on', x.getAttribute('data-src') === s);
+    });
+    if (s === 'community') loadCommunity(); else loadLibrary();
+  }
+
+  /* ---------- boot ---------- */
+  function boot() {
+    initThemeBtn();
+    initPlayer();
+    initEvents();
+    var yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
+    if (source === 'community') loadCommunity(); else loadLibrary();
   }
 
   if (document.readyState === 'loading') {
