@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>创作者中心 · 音乐电台</title>
+<meta name="description" content="音乐电台创作者中心 —— 用小蓝页账号登录，发布与管理你的音乐作品。">
+<meta name="theme-color" content="#7c3aed">
+<script>try{var p=localStorage.getItem('jm-theme')||'auto';var t=(p==='light'||p==='dark')?p:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}</script>
+<link rel="icon" href="assets/favicon.svg?v=1" type="image/svg+xml">
+<link rel="stylesheet" href="assets/music.css?v=20260930b">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="logo" src="assets/favicon.svg?v=1" alt="音乐电台">
+      音乐电台<span class="sub">RADIO</span>
+    </a>
+    <div class="spacer"></div>
+    <nav class="nav">
+      <a href="index.html" data-i18n="nav.home">首页</a>
+      <a href="#" data-lang-toggle>EN</a>
+    </nav>
+    <div class="hdr-right" id="hdrRight"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 class="cc-h1" data-i18n="cc.title">创作者中心</h1>
+  <p class="cc-sub" data-i18n="cc.sub">用你的小蓝页账号登录，发布与你的音乐。</p>
+
+  <section id="ccGate" class="panel cc-gate hide">
+    <p data-i18n="cc.please">请先登录以使用创作者中心</p>
+    <a class="login-btn big" id="ccLogin" href="#">用小蓝页登录</a>
+  </section>
+
+  <section id="ccMain" class="hide">
+    <div class="panel cc-profile" id="ccProfile"></div>
+
+    <div class="panel cc-add">
+      <h2 data-i18n="cc.add">发布作品</h2>
+      <form id="ccForm" class="cc-form" autocomplete="off">
+        <input type="hidden" id="f_id">
+        <div class="row"><label data-i18n="cc.form.title">歌名</label><input id="f_title" required maxlength="120"></div>
+        <div class="row"><label data-i18n="cc.form.artist">艺人</label><input id="f_artist" maxlength="120"></div>
+        <div class="row"><label data-i18n="cc.form.album">专辑</label><input id="f_album" maxlength="160"></div>
+        <div class="row"><label data-i18n="cc.form.tags">标签</label><input id="f_tags" maxlength="200" placeholder="pop, 国风, lo-fi"></div>
+        <div class="row"><label data-i18n="cc.form.src">音频链接</label><input id="f_src" required maxlength="2000" placeholder="https://…"></div>
+        <div class="row"><label data-i18n="cc.form.cover">封面链接</label><input id="f_cover" maxlength="2000" placeholder="https://…（可选）"></div>
+        <div class="cc-actions">
+          <button type="submit" class="btn primary" id="f_submit" data-i18n="cc.form.submit">发布</button>
+          <button type="button" class="btn" id="f_cancel" data-i18n="cc.form.cancel">取消</button>
+          <span id="ccMsg" class="cc-msg"></span>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel cc-works">
+      <h2 data-i18n="cc.my">我的作品</h2>
+      <div id="ccList" class="cc-list"></div>
+      <div id="ccEmpty" class="empty" style="display:none" data-i18n="cc.empty">你还没有发布作品。</div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="yr"></span> 音乐电台</span>
+    <span class="spacer"></span>
+    <span data-i18n="footer.tagline">独立站点 · 独立后端（Cloudflare Pages + Functions）</span>
+  </div>
+</footer>
+
+<script src="assets/lang.js?v=20260930b"></script>
+<script src="assets/jm.auth.js?v=20260930b"></script>
+<script src="assets/jm.creator.js?v=20260930b"></script>
+</body>
+</html>
