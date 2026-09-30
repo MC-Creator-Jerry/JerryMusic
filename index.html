@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JerryMusic · 音乐</title>
+<meta name="description" content="JerryMusic —— 一座收藏与分享音乐的小岛。听歌、建歌单、把喜欢的旋律留给同好。">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="JerryMusic · 音乐" />
+<meta property="og:description" content="JerryMusic —— 一座收藏与分享音乐的小岛。" />
+<meta property="og:site_name" content="JerryMusic" />
+<meta property="og:url" content="https://jerrymusic.pages.dev/" />
+<meta property="og:image" content="https://jerrymusic.pages.dev/assets/og.svg?v=1" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#7c3aed" />
+<script>try{var p=localStorage.getItem('jm-theme')||'auto';var t=(p==='light'||p==='dark')?p:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}</script>
+<link rel="icon" href="assets/favicon.svg?v=1" type="image/svg+xml">
+<link rel="stylesheet" href="assets/music.css?v=2026093011">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img class="logo" src="assets/favicon.svg?v=1" alt="JerryMusic">
+      JerryMusic<span class="sub">MUSIC</span>
+    </a>
+    <div class="spacer"></div>
+    <nav class="nav">
+      <a href="index.html" class="on" data-i18n="nav.home">首页</a>
+      <a href="#about" data-i18n="nav.about">关于</a>
+      <a href="#" data-lang-toggle>EN</a>
+    </nav>
+    <div class="hdr-right" id="hdrRight"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1 data-i18n="hero.title">JerryMusic · 音乐小岛</h1>
+    <p data-i18n="hero.desc">一座收藏与分享音乐的小岛。听歌、建歌单、把喜欢的旋律留给同好。</p>
+  </section>
+
+  <div class="toolbar">
+    <input id="q" class="input search" type="search" placeholder="搜索歌名 / 艺人 / 标签…" data-i18n-ph="search.placeholder" autocomplete="off">
+    <div class="seg" id="sortSeg" role="group" aria-label="排序方式">
+      <button data-s="time" class="on" data-i18n="sort.newest">最新</button>
+      <button data-s="title" data-i18n="sort.title">歌名</button>
+    </div>
+    <button id="btnClear" class="btn" data-i18n="btn.clear">清空</button>
+  </div>
+  <div id="chips" class="chips"></div>
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" style="display:none" data-i18n="empty">曲库还是空的 —— 往 tracks.json 里加第一首歌吧。</div>
+
+  <section id="about" class="panel" style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin:24px 0 40px;">
+    <h2 data-i18n="about.title" style="margin:0 0 10px;font-size:18px;">关于 JerryMusic</h2>
+    <p data-i18n="about.body" style="color:var(--text-2);line-height:1.7;margin:0;">JerryMusic 是 Jerry 的个人音乐站，部署在 Cloudflare Pages，曲库以静态 tracks.json 维护，可随时增删。</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="yr"></span> JerryMusic</span>
+    <span class="spacer"></span>
+    <span data-i18n="footer.tagline">独立站点 · 独立后端（Cloudflare Pages + Functions）</span>
+  </div>
+</footer>
+
+<!-- 底部常驻播放器 -->
+<div class="player-bar" id="playerBar" style="display:none">
+  <div class="pb-inner">
+    <div class="pb-cover" id="pbCover">♪</div>
+    <div class="pb-meta">
+      <div class="pb-title" id="pbTitle" data-i18n="player.none">选一首歌开始播放</div>
+      <div class="pb-artist" id="pbArtist"></div>
+    </div>
+    <div class="pb-controls">
+      <button class="pb-btn" id="pbPrev" title="上一首">⏮</button>
+      <button class="pb-btn play" id="pbPlay" title="播放">▶</button>
+      <button class="pb-btn" id="pbNext" title="下一首">⏭</button>
+      <span class="pb-time" id="pbCur">0:00</span>
+      <div class="pb-seek" id="pbSeek"><div class="pb-progress" id="pbProgress"></div></div>
+      <span class="pb-time" id="pbDur">0:00</span>
+      <input class="pb-vol" id="pbVol" type="range" min="0" max="1" step="0.01" value="1" title="音量">
+    </div>
+  </div>
+  <audio id="audio" preload="metadata"></audio>
+</div>
+
+<script src="assets/lang.js?v=20260930"></script>
+<script src="assets/app.js?v=20260930"></script>
+</body>
+</html>
