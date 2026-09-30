@@ -1,0 +1,277 @@
+/* ============================================================
+   jerrymusic-site  /  assets/music.css
+   Independent site styles. Dark "music / night" theme (violet/indigo).
+   Adapted from the sibling pianyu-site design system for visual consistency.
+   ============================================================ */
+
+:root {
+  --ink: #0b0f1f;
+  --ink-2: #11152e;
+  --panel: #161b34;
+  --panel-2: #1d2342;
+  --line: #2a3157;
+  --text: #e9ecf8;
+  --text-2: #c7cde6;
+  --muted: #95a0c2;
+  --accent: #8b5cf6;
+  --accent-2: #6366f1;
+  --accent-3: #a855f7;
+  --on-accent: #ffffff;
+  --danger: #ef5a6f;
+  --thumb-1: #221a44;
+  --thumb-2: #120c2a;
+  --hdr-bg: rgba(11, 15, 31, 0.82);
+  --ok-bg: #102a26; --ok-bd: #1d534a; --ok-fg: #bff3ea;
+  --err-bg: #2a1621; --err-bd: #4a2130; --err-fg: #ffd7dd;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------------- light mode ---------------- */
+html[data-theme='light'] {
+  --ink: #eef0fb;
+  --ink-2: #e6e9f8;
+  --panel: #ffffff;
+  --panel-2: #f4f6fc;
+  --line: #d8def0;
+  --text: #181f38;
+  --text-2: #3a4470;
+  --muted: #5d6b91;
+  --accent: #7c3aed;
+  --accent-2: #4f46e5;
+  --accent-3: #9333ea;
+  --on-accent: #ffffff;
+  --danger: #d63a52;
+  --thumb-1: #e3e0f5;
+  --thumb-2: #d2cdec;
+  --hdr-bg: rgba(255, 255, 255, 0.84);
+  --ok-bg: #e6f6f2; --ok-bd: #a9dfd4; --ok-fg: #10635a;
+  --err-bg: #fdecef; --err-bd: #f3bcc6; --err-fg: #8e1f31;
+  --shadow: 0 10px 30px rgba(40, 50, 90, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(1200px 600px at 15% -10%, var(--ink-2) 0%, var(--ink) 55%) fixed;
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* keep space for the fixed bottom player */
+body { padding-bottom: 96px; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* ---------------- header ---------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(120deg, #8b5cf6, #6366f1 70%, #a855f7);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 62px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+.brand:hover { text-decoration: none; }
+.brand .logo { width: 30px; height: 30px; }
+.brand .sub { font-size: 12px; color: var(--muted); letter-spacing: 0; font-weight: 400; margin-left: 2px; }
+.spacer { flex: 1; }
+.site-header .brand, .site-header .brand .sub,
+.site-header .nav a, .site-header .nav a:hover { color: #1b1430; }
+.site-header .nav a.on { background: rgba(27,20,48,0.86); color: #ece9ff; }
+.site-header .theme-btn { color: #1b1430; border-color: rgba(27,20,48,0.35); background: rgba(255,255,255,0.16); }
+.site-header .theme-btn:hover { border-color: #1b1430; }
+
+/* ---------------- nav ---------------- */
+.nav { display: flex; gap: 4px; align-items: center; }
+.nav a {
+  color: #2a2150;
+  padding: 7px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+}
+.nav a:hover { color: #fff; background: rgba(255,255,255,0.18); text-decoration: none; }
+.nav a.on { color: #fff; background: rgba(27,20,48,0.86); font-weight: 600; }
+
+/* ---------------- search + chips ---------------- */
+.toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 22px 0 8px; }
+.input, .select, .textarea {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+}
+.input:focus, .select:focus, .textarea:focus { border-color: var(--accent); }
+.search { flex: 1; min-width: 220px; }
+
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 4px; }
+.chip {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+}
+.chip:hover { border-color: var(--accent); color: var(--text); }
+.chip.on { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: var(--on-accent); border-color: transparent; font-weight: 600; }
+
+/* ---------------- buttons ---------------- */
+.btn {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: var(--on-accent); border-color: transparent; font-weight: 600; }
+
+/* ---------------- grid + cards ---------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+  margin: 22px 0 20px;
+}
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.14s ease, border-color 0.14s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.card .thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, var(--thumb-1), var(--thumb-2));
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.card .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card .thumb .ph {
+  font-size: 46px; color: rgba(255,255,255,0.55);
+  filter: drop-shadow(0 4px 10px rgba(124,58,237,0.4));
+}
+.card .thumb .play-overlay {
+  position: absolute; inset: 0; margin: auto;
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; font-size: 22px; opacity: 0; transition: opacity .15s ease;
+  box-shadow: 0 8px 20px rgba(99,102,241,0.5);
+}
+.card:hover .thumb .play-overlay { opacity: 1; }
+.card .dur {
+  position: absolute; right: 8px; bottom: 8px;
+  background: rgba(0,0,0,0.72); color: #fff; font-size: 12px;
+  padding: 2px 7px; border-radius: 6px;
+}
+.card .body { padding: 12px 13px 15px; display: flex; flex-direction: column; gap: 8px; }
+.card .title { font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--text); }
+.card .meta { font-size: 12px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; }
+.card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { font-size: 11px; color: var(--accent); background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.30); padding: 2px 8px; border-radius: 999px; }
+
+.empty { color: var(--muted); text-align: center; padding: 70px 0; }
+
+/* ---------------- now playing (bottom bar) ---------------- */
+.player-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
+}
+.player-bar .pb-inner {
+  max-width: 1180px; margin: 0 auto; padding: 10px 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.pb-cover {
+  width: 46px; height: 46px; border-radius: 9px; flex: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 20px; overflow: hidden;
+}
+.pb-cover img { width: 100%; height: 100%; object-fit: cover; }
+.pb-meta { min-width: 0; flex: none; width: 200px; }
+.pb-meta .pb-title { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pb-meta .pb-artist { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pb-controls { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.pb-btn {
+  background: transparent; border: 0; color: var(--text); font-size: 17px; line-height: 1;
+  cursor: pointer; padding: 6px 8px; border-radius: 8px;
+}
+.pb-btn:hover { background: var(--panel-2); }
+.pb-btn.play { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.pb-btn.play:hover { filter: brightness(1.08); }
+.pb-time { font-size: 12px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pb-seek { position: relative; flex: 1; height: 6px; background: var(--line); border-radius: 999px; cursor: pointer; min-width: 60px; }
+.pb-seek .pb-progress { position: absolute; left: 0; top: 0; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 999px; }
+.pb-vol { width: 84px; accent-color: var(--accent); }
+@media (max-width: 720px) {
+  .pb-meta { width: 120px; }
+  .pb-vol { display: none; }
+}
+
+/* ---------------- footer ---------------- */
+footer.site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; padding: 22px 0 34px; margin-top: 30px; }
+footer.site-footer .wrap { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* ---------------- theme button ---------------- */
+.theme-btn {
+  width: 38px; height: 38px;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 17px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+}
+.theme-btn:hover { border-color: var(--accent); }
+
+/* ---------------- hero ---------------- */
+.hero { margin: 26px 0 6px; }
+.hero h1 { font-size: 30px; font-weight: 800; margin: 0 0 8px; background: linear-gradient(120deg, var(--accent), var(--accent-3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p { color: var(--text-2); font-size: 15px; line-height: 1.7; margin: 0; max-width: 720px; }
+
+@media (max-width: 560px) {
+  .brand .sub { display: none; }
+  .hero h1 { font-size: 24px; }
+}
