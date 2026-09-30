@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g transform="translate(80,150)">
+    <rect width="120" height="120" rx="26" fill="url(#a)"/>
+    <g fill="#fff" transform="translate(30,30)">
+      <path d="M14 -2 L66 -10 V34 a10 10 0 1 1 -8 -9.6 V10 L22 12 V36 a10 10 0 1 1 -8 -9.6 Z"/>
+    </g>
+  </g>
+  <text x="240" y="225" fill="#fff" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="78" font-weight="700">JerryMusic</text>
+  <text x="242" y="300" fill="#c4b5fd" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="40">一座收藏与分享音乐的小岛</text>
+  <text x="242" y="360" fill="#a5b4fc" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="30">听歌 · 建歌单 · 分享给同好</text>
+</svg>
