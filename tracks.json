@@ -1,0 +1,43 @@
+{
+  "tracks": [
+    {
+      "id": "demo-1",
+      "title": "演示曲目 · 晨光",
+      "titleEn": "Demo · Morning Light",
+      "artist": "Jerry",
+      "artistEn": "Jerry",
+      "album": "演示专辑",
+      "albumEn": "Demo Album",
+      "tags": ["轻音乐", "Demo", "演示"],
+      "src": "assets/samples/demo1.wav",
+      "duration": 6,
+      "addedAt": 2026093011
+    },
+    {
+      "id": "demo-2",
+      "title": "演示曲目 · 晚风",
+      "titleEn": "Demo · Evening Breeze",
+      "artist": "Jerry",
+      "artistEn": "Jerry",
+      "album": "演示专辑",
+      "albumEn": "Demo Album",
+      "tags": ["电子", "Demo", "演示"],
+      "src": "assets/samples/demo2.wav",
+      "duration": 6,
+      "addedAt": 2026093012
+    },
+    {
+      "id": "demo-3",
+      "title": "演示曲目 · 星河",
+      "titleEn": "Demo · Galaxy",
+      "artist": "Jerry",
+      "artistEn": "Jerry",
+      "album": "演示专辑",
+      "albumEn": "Demo Album",
+      "tags": ["氛围", "Demo", "演示"],
+      "src": "assets/samples/demo3.wav",
+      "duration": 6,
+      "addedAt": 2026093013
+    }
+  ]
+}
