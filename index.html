@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JerryMusic · 音乐</title>
-<meta name="description" content="JerryMusic —— 一座收藏与分享音乐的小岛。听歌、建歌单、把喜欢的旋律留给同好。">
+<title>音乐电台 · MusicRadio</title>
+<meta name="description" content="音乐电台 —— 一座收藏与分享音乐的电台。登录后开通创作者中心，发布你自己的作品。">
 <meta property="og:type" content="website" />
-<meta property="og:title" content="JerryMusic · 音乐" />
-<meta property="og:description" content="JerryMusic —— 一座收藏与分享音乐的小岛。" />
-<meta property="og:site_name" content="JerryMusic" />
+<meta property="og:title" content="音乐电台 · MusicRadio" />
+<meta property="og:description" content="音乐电台 —— 一座收藏与分享音乐的电台。" />
+<meta property="og:site_name" content="音乐电台" />
 <meta property="og:url" content="https://jerrymusic.pages.dev/" />
 <meta property="og:image" content="https://jerrymusic.pages.dev/assets/og.svg?v=1" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -21,12 +21,13 @@
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <img class="logo" src="assets/favicon.svg?v=1" alt="JerryMusic">
-      JerryMusic<span class="sub">MUSIC</span>
+      <img class="logo" src="assets/favicon.svg?v=1" alt="音乐电台">
+      音乐电台<span class="sub">RADIO</span>
     </a>
     <div class="spacer"></div>
     <nav class="nav">
       <a href="index.html" class="on" data-i18n="nav.home">首页</a>
+      <a href="creator.html" data-i18n="nav.creator">创作者中心</a>
       <a href="#about" data-i18n="nav.about">关于</a>
       <a href="#" data-lang-toggle>EN</a>
     </nav>
@@ -45,6 +46,10 @@
     <div class="seg" id="sortSeg" role="group" aria-label="排序方式">
       <button data-s="time" class="on" data-i18n="sort.newest">最新</button>
       <button data-s="title" data-i18n="sort.title">歌名</button>
+    </div>
+    <div class="seg" id="srcSeg" role="group" aria-label="内容来源">
+      <button data-src="library" class="on" data-i18n="src.library">电台曲库</button>
+      <button data-src="community" data-i18n="src.community">社区作品</button>
     </div>
     <button id="btnClear" class="btn" data-i18n="btn.clear">清空</button>
   </div>
@@ -87,7 +92,8 @@
   <audio id="audio" preload="metadata"></audio>
 </div>
 
-<script src="assets/lang.js?v=20260930"></script>
-<script src="assets/app.js?v=20260930"></script>
+<script src="assets/lang.js?v=20260930b"></script>
+<script src="assets/app.js?v=20260930b"></script>
+<script src="assets/jm.auth.js?v=20260930b"></script>
 </body>
 </html>
