@@ -61,13 +61,20 @@ export async function onRequestGet(context) {
 
   let d = null;
   try {
+    // 密钥走 body，不要走 Authorization header。
+    // 原因：Pages 的 secret 在写入过程中可能混入不可见字符（如换行），
+    // 放进 header 会触发 "Invalid header value" 而让整次换码失败；
+    // JSON body 对这类字符是安全的，且 IdP 的 token 端点支持 client_secret。
     const r = await fetch(IDP + '/api/sso/token', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        authorization: 'Bearer ' + secret,
       },
-      body: JSON.stringify({ code: code, client_id: CLIENT_ID }),
+      body: JSON.stringify({
+        code: code,
+        client_id: CLIENT_ID,
+        client_secret: secret,
+      }),
     });
     const j = await r.json();
     if (r.ok && j && j.ok) d = j;
