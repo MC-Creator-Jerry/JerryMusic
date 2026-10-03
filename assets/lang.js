@@ -21,6 +21,8 @@
     'empty': { zh: '这里还没有内容 —— 去创作者中心发布第一首歌吧。', en: 'Nothing here yet — publish your first track in the Creator Center.' },
     'empty.library': { zh: '曲库还是空的 —— 往 tracks.json 里加第一首歌吧。', en: 'The library is empty — add your first track to tracks.json.' },
     'footer.tagline': { zh: '独立站点 · 独立后端（Cloudflare Pages + Functions）', en: 'Independent site · own backend (Cloudflare Pages + Functions)' },
+    'footer.motto': { zh: '有歌就放，随点随听。', en: 'Drop a song, press play.' },
+    'footer.main': { zh: '小蓝页（主站）', en: 'Xiaolan (main site)' },
     'hero.title': { zh: '音乐电台 · 收听每一段旋律', en: 'MusicRadio · Tune into every melody' },
     'hero.desc': { zh: '一座收藏与分享音乐的电台。登录后开通创作者中心，发布你自己的作品，让同好听见。', en: 'A radio to collect and share music. Sign in to open your Creator Center and publish your own tracks.' },
     'about.title': { zh: '关于 音乐电台', en: 'About MusicRadio' },
